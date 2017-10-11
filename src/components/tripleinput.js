@@ -12,18 +12,18 @@ class TripleInputBox extends Component {
 		this.data = require('../data/data.json');
 		let dataV =  JSON.parse(JSON.stringify( this.data )); 
 		let obj_keys = Object.keys(dataV);
-		let ran_key = obj_keys[Math.floor(Math.random() * obj_keys.length)];
+		this.ran_key = obj_keys[Math.floor(Math.random() * obj_keys.length)];
 		let blank = [false, false, false];
 		let rand = this.getRandomArbitrary(0, 3);
 		blank[rand] = true;
-		var response = dataV[ran_key][rand];
+		var response = dataV[this.ran_key][rand];
 		var intervalId = setInterval(this.timer, 4000);
-		dataV[ran_key][rand] = "";
+		dataV[this.ran_key][rand] = "";
 		this.state = {
 			"inputs": [
-				{ key: 0, name: "0", value: dataV[ran_key][0], empty_box: blank[0].toString(),placeh:"Infinitve" },
-				{ key: 1, name: "1", value: dataV[ran_key][1], empty_box: blank[1].toString(),placeh:"Simple Past" },
-				{ key: 2, name: "2", value: dataV[ran_key][2], empty_box: blank[2].toString(), placeh:"Past Participle" }
+				{ key: 0, name: "0", value: dataV[this.ran_key][0], empty_box: blank[0].toString(),placeh:"Infinitve" },
+				{ key: 1, name: "1", value: dataV[this.ran_key][1], empty_box: blank[1].toString(),placeh:"Simple Past" },
+				{ key: 2, name: "2", value: dataV[this.ran_key][2], empty_box: blank[2].toString(), placeh:"Past Participle" }
 			], "response": response, "cnt":0, "intervalId" : intervalId
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -38,18 +38,18 @@ class TripleInputBox extends Component {
 		const dataJson = require('../data/data.json');
 		let datac =  JSON.parse(JSON.stringify( dataJson )); 
 		var obj_keys = Object.keys(dataJson);
-		var ran_key = obj_keys[Math.floor(Math.random() * obj_keys.length)];
+		this.ran_key = obj_keys[Math.floor(Math.random() * obj_keys.length)];
 		var blank = [false, false, false];
 		var rand = this.getRandomArbitrary(0, 3);
 		blank[rand] = true;
-		//console.log("rmnl:"+ datac[ran_key]);
-		const response = datac[ran_key][rand];
-		datac[ran_key][rand] = "";
+		console.log("rmnl:"+ datac[this.ran_key]);
+		const response = datac[this.ran_key][rand];
+		datac[this.ran_key][rand] = "";
 		var obj = {
 			"inputs": [
-				{ key: 0, name: "0", value: datac[ran_key][0], empty_box: blank[0].toString(), placeh:"Infinitve"},
-				{ key: 1, name: "1", value: datac[ran_key][1], empty_box: blank[1].toString(), placeh:"Simple Past"},
-				{ key: 2, name: "2", value: datac[ran_key][2], empty_box: blank[2].toString(), placeh:"Past Participle"}
+				{ key: 0, name: "0", value: datac[this.ran_key][0], empty_box: blank[0].toString(), placeh:"Infinitve"},
+				{ key: 1, name: "1", value: datac[this.ran_key][1], empty_box: blank[1].toString(), placeh:"Simple Past"},
+				{ key: 2, name: "2", value: datac[this.ran_key][2], empty_box: blank[2].toString(), placeh:"Past Participle"}
 			], "response": response
 		};
 		this.setState(obj);
@@ -79,7 +79,7 @@ class TripleInputBox extends Component {
 		return (
 			<div className="row">
 				<p>Score : {this.state.cnt}</p>
-				<p><a href="http://www.thefreedictionary.com/" >http://www.thefreedictionary.com/</a></p>
+				<p><a href={"http://www.thefreedictionary.com/" + this.ran_key} >{"http://www.thefreedictionary.com/" + this.ran_key}</a></p>
 				<div className="col-xs-3"/>
 				{this.state["inputs"].map((my_input) => {
 					if (my_input.empty_box === "true") {
