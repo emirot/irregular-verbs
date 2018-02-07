@@ -104,7 +104,7 @@
 	"run": ["run", "ran", "run"],
 	"saw" : ["saw","sawed", "sawn"],
 	"say": ["say", "said", "said"],
-	"see": ["see", "say", "seen"],
+	"see": ["see", "saw", "seen"],
 	"seek": ["seek", "sought", "sought"],
 	"sell": ["sell", "sold", "sold"],
 	"send": ["send", "sent","sent"],
